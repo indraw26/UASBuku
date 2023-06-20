@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Books;
+use App\Models\Kategori;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,13 +23,17 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Books::create([
-            'idBuku'=>"1",
+            'id'=>"1",
             "judul"=>"PAW INDAH",
             "Penulis"=>"Usman",
             "Penerbit"=>"UMDP",
             "stok"=>"2",
             "harga"=>1000
-            
+        ]);
+
+        Kategori::create([
+            "id"=>"1",
+            "kategori"=>"romantis"
         ]);
     }
 }

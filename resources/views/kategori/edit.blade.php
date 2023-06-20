@@ -20,35 +20,23 @@ Edit Category
     @endif
 
 
-    <form enctype="multipart/form-data" class="bg-white shadow-sm p-3" action="{{route('categories.update', [$category->id])}}"
+    <form enctype="multipart/form-data" class="bg-white shadow-sm p-3" action="{{route('kategori.update', [$category->id])}}"
         method="POST">
 
         @csrf
         <input type="hidden" value="PUT" name="_method">
 
-        <label for="category_name">Category Name</label>
-        <input type="text" class="form-control {{$errors->first('name') ? "is-invalid" : ""}}" name="name" value="{{old('name') ? old('name') : $category->name}}">
+        <label for="id">ID</label>
+        <input type="text" class="form-control {{$errors->first('id') ? "is-invalid" : ""}}" name="id" value="{{old('id') ? old('id') : $category->id}}" disabled>
         <div class="invalid-feedback">
-            {{$errors->first('name')}}
+            {{$errors->first('id')}}
         </div>
-        <br><br>
 
-        <label for="slug">Category Slug</label>
-        <input type="text" class="form-control {{$errors->first('slug') ? "is-invalid" : ""}}"
-            value="{{old('slug') ? old('slug') : $category->slug}}" name="slug">
-            <div class="invalid-feedback">
-                {{$errors->first('slug')}}
-            </div>
-        <br><br>
-
-        <label for="category_image">Category Image</label><br>
-        @if ($category->image)
-            <span>Current Image</span><br><br>
-            <img src="{{asset('storage/'.$category->image)}}" width="120"><br><br>
-        @endif
-        <input type="file" class="form-control" name="image">
-        <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar</small>
-
+        <label for="kategori">Jenis Kategori</label>
+        <input type="text" class="form-control {{$errors->first('kategori') ? "is-invalid" : ""}}" name="kategori" value="{{old('kategori') ? old('kategori') : $category->kategori}}">
+        <div class="invalid-feedback">
+            {{$errors->first('kategori')}}
+        </div>
         <br><br>
 
         <input type="submit" class="btn btn-primary" value="Update">

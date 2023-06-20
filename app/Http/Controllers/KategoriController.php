@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -33,47 +34,51 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            "judul"=>"required|string",
-            "penulis"=>"required|string",
-            "penerbit"=>"required|string",
-            "stok"=>"required|integer",
-            "harga"=>"required|integer",
+            "kategori"=>"required|string",
         ]);
         Kategori::create($validateData);
 
-        return redirect()->route('kategori.index')->with('status', 'Book created successfully');
+        return redirect()->route('kategori.index')->with('status', 'Kategori created successfully');
     }
 
     /**
      * Display the specified resource.
      */
 
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function edit(String $id)
+    {
+        $category = Kategori::find($id);
+        return view('kategori/edit',[
+            "category"=>$category
+        ]);
+    }
 
 
     /**
      * Update the specified resource in storage.
      */
-    // public function update(Request $request, Books $book)
-    // {
-    //     $validateData = $request->validate([
-    //         "judul"=>"required|string",
-    //         "penulis"=>"required|string",
-    //         "penerbit"=>"required|string",
-    //         "stok"=>"required|integer",
-    //         "harga"=>"required|integer",
-    //     ]);
-    //     $book->update($validateData);
-      
+    public function update(Request $request, String $id)
+    {
+        $kategori = Kategori::find($id);
+
+        $validateData = $request->validate([
+            'kategori'=>"required|string"
+        ]);
+        if ($kategori && $validateData) {
+            $kategori->update([
+                'kategori'=>$request->kategori
+            ]);
+        }
         
-    //     return redirect()->route('books.index')->with('sucess', 'data buku' . $validateData['judul'] . 'berhasil');
-    // }
+        return redirect()->route('kategori.index')->with('status', 'Data Kategori ' . $validateData['kategori'] . ' Berhasil Diedit');
+    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-
+    public function destroy(String $id)
+    {
+        $kategori=Kategori::find($id);
+        if($kategori) {
+            $kategori->delete();
+        }
+        return redirect()->back()->with('success', "Mahasiswa Berhasil Dihapus");
+    }
 }

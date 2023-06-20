@@ -8,14 +8,11 @@
     <div class="row">
         <div class="col-md-12">
 
-            {{-- @if (session('status'))
+            @if (session('Notification'))
         <div class="alert alert-success">
-            {{session('status')}}
+            {{session('Notification')}}
         </div>
-        @endif --}}
-
-         
-
+        @endif
 
             <div class="row mb-3">
                 <div class="col-md-12 text-right">
@@ -49,10 +46,10 @@
                             <td>{{ $item->stok }}</td>
                             <td>{{ $item->harga }}</td>
                             <td>
-                                <form action="{{ route('books.destroy', $item->idBuku) }}" method="POST">
+                                <form action="{{ route('books.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     
-                                    <a href="{{ route('books.edit', $item->idBuku) }}" type="submit" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('books.edit', $item->id) }}" type="submit" class="btn btn-warning">Edit</a>
 
                                     @method('delete')
                                     <button type="submit" class="btn btn-xs btn-danger show_confirm">Delete</button>
@@ -87,6 +84,4 @@
   
 </script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <!-- row end -->
-    <!-- row end -->
 @endsection

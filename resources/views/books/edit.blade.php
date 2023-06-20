@@ -15,86 +15,49 @@
             @endif
 
 
-            <form enctype="multipart/form-data" method="POST" action="{{route('books.update', [$book->id])}}" class="p-3 shadow-sm bg-white">
+            <form enctype="multipart/form-data" method="POST" action="{{route('books.update', [$books->id])}}" class="p-3 shadow-sm bg-white">
             @csrf
             <input type="hidden" name="_method" value="PUT">
 
-            <label for="title">Title</label>
-            <input type="text" class="form-control {{$errors->first('title') ? "is-invalid" : ""}}"
-                value="{{old('title') ? old('title') : $book->title}}" name="title" placeholder="book title"> 
+            <label for="judul">Judul</label>
+            <input type="text" class="form-control {{$errors->first('judul') ? "is-invalid" : ""}}"
+                value="{{old('judul') ? old('judul') : $books->judul}}" name="judul" placeholder="book judul"> 
                 <div class="invalid-feedback">
-                    {{$errors->first('title')}}
+                    {{$errors->first('judul')}}
                 </div>
                 <br>
 
-            <label for="cover">Cover</label><br>
-            <small class="text-muted">Current cover</small> <br>
-            @if ($book->cover)
-                <img src="{{asset('storage/'.$book->cover)}}" width="96px">
-            @endif
-            <br><br>
-
-            <input type="file" class="form-control" name="cover">
-            <small class="text-muted">Kosongkan jika tidak ingin mengubah cover</small>
-            <br><br>
-
-            <label for="slug">Slug</label> <br>
-            <input type="text" class="form-control {{$errors->first('slug') ? "is-invalid" : ""}}" value="{{old('slug') ? old('slug') : $book->slug}}" name="slug" placeholder="enter-a-slug"> 
+            <label for="penulis">Penulis</label> <br>
+            <input type="text" class="form-control {{$errors->first('penulis') ? "is-invalid" : ""}}" value="{{old('penulis') ? old('penulis') : $books->penulis}}" name="penulis" placeholder="enter-a-penulis"> 
             <div class="invalid-feedback">
-                {{$errors->first('slug')}}
+                {{$errors->first('penulis')}}
             </div>
             <br>
 
-            <label for="description">Description</label> <br>
-            <textarea name="description" id="description"
-                class="form-control {{$errors->first('description') ? "is-invalid" : ""}}">{{old('description') ? old('description') : $book->description}}</textarea>
+            <label for="penerbit">Penerbit</label> <br>
+            <input type="text" class="form-control {{$errors->first('penerbit') ? "is-invalid" : ""}}" placeholder="penerbit" id="penerbit" name="penerbit" value="{{old('penerbit') ? old('penerbit') : $books->penerbit}}">
+            <div class="invalid-feedback">
+                {{$errors->first('penerbit')}}
+            </div>
+            <br>
+
+            <label for="stok">Stok</label>
+            <input placeholder="stok" value="{{old('stok') ? old('stok') : $books->stok}}" type="text" id="stok" name="stok" class="form-control {{$errors->first('stok') ? "is-invalid" : ""}}">
+            <div class="invalid-feedback">
+                {{$errors->first('stok')}}
+            </div>
+            <br>
+
+            <label for="harga">Harga</label> <br>
+            <input type="number" class="form-control {{$errors->first('harga') ? "is-invalid" : ""}}" name="harga"
+                placeholder="harga" id="harga" value="{{old('harga') ? old('harga') : $books->harga}}"> 
                 <div class="invalid-feedback">
-                    {{$errors->first('description')}}
-                </div>
-            <br>
-
-            <label for="categories">Categories</label>
-            <select multiple class="form-control" name="categories[]" id="categories"></select> <br><br>
-
-            <label for="stock">Stock</label> <br>
-            <input type="text" class="form-control {{$errors->first('stock') ? "is-invalid" : ""}}" placeholder="stock" id="stock" name="stock" value="{{old('stock') ? old('stock') : $book->stock}}">
-            <div class="invalid-feedback">
-                {{$errors->first('stock')}}
-            </div>
-            <br>
-
-            <label for="author">Author</label>
-            <input placeholder="Author" value="{{old('author') ? old('author') : $book->author}}" type="text" id="author" name="author" class="form-control {{$errors->first('author') ? "is-invalid" : ""}}">
-            <div class="invalid-feedback">
-                {{$errors->first('author')}}
-            </div>
-            <br>
-
-            <label for="publisher">Publisher</label><br>
-            <input class="form-control {{$errors->first('publisher') ? "is-invalid" : ""}}" type="text"
-                placeholder="Publisher" name="publisher" id="publisher"
-                value="{{old('publisher') ? old('publisher') : $book->publisher}}"> 
-                <div class="invalid-feedback">
-                    {{$errors->first('publisher')}}
+                    {{$errors->first('harga')}}
                 </div>
                 <br>
-
-            <label for="price">Price</label> <br>
-            <input type="text" class="form-control {{$errors->first('price') ? "is-invalid" : ""}}" name="price"
-                placeholder="Price" id="price" value="{{old('price') ? old('price') : $book->price}}"> 
-                <div class="invalid-feedback">
-                    {{$errors->first('price')}}
-                </div>
-                <br>
-
-            <label for="status">Status</label>
-            <select name="status" id="status" class="form-control">
-                <option {{$book->status == 'PUBLISH' ? 'selected' : ''}} value="PUBLISH">PUBLISH</option>
-                <option {{$book->status == 'DRAFT' ? 'selected' : ''}} value="DRAFT">DRAFT</option>
-            </select>
-            <br>
 
             <button class="btn btn-primary" value="PUBLISH">Update</button>
+            <a href="{{ url("/books") }}" class="btn btn-info">Kembali</a>
             </form>
         </div>
     </div>
@@ -103,29 +66,4 @@
 @section('footer-scripts')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
-<script>
-    $("#categories").select2({
-        ajax: {
-            url: "{{asset('/')}}ajax/categories/search",
-            processResults: function (data) {
-                return {
-                    results: data.map(function (item) {
-                        return {
-                            id: item.id,
-                            text: item.name
-                        }
-                    })
-                }
-            }
-        }
-    });
-
-    var categories = {!! $book->categories !!}
-
-        categories.forEach(function(category) {
-            var option = new Option(category.name, category.id, true, true);
-            $('#categories').append(option).trigger('change');
-        });
-</script>
 @endsection

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PeminjamananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/',function(){
+    return view('home');
+});
 Route::resource('/books',BooksController::class);
 Route::resource('/kategori',KategoriController::class);
-Route::resource('/peminjaman',PeminjamanController::class);
+Route::resource('/peminjaman',PeminjamananController::class);

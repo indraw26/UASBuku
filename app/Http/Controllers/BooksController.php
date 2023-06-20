@@ -53,25 +53,49 @@ class BooksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Books $books)
+    public function edit(String $id)
     {
-        //
+        $book = Books::find($id);
+        return view('books.edit',[
+            "books"=>$book
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Books $books)
+    public function update(Request $request, String $id)
     {
-        //
+        $validateData = $request->validate([
+           'judul'=>'required|string', 
+           'penulis'=>'required|string', 
+           'penerbit'=>'required|string', 
+           'stok'=>'required|numeric', 
+           'harga'=>'required|numeric', 
+        ]);
+
+        $book = Books::find($id);
+        if($validateData) {
+            $book->update([
+                "judul"=>$request->judul,
+                "penulis"=>$request->penulis,
+                "penerbit"=>$request->penerbit,
+                "stok"=>$request->stok,
+                "harga"=>$request->harga,
+            ]);
+        }
+        return redirect('books')->with('Notification','Data Berhasil Diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Books $books)
+    public function destroy(String $id)
     {
-        $books->delete();
+        $buku=Books::find($id);
+        if($buku) {
+            $buku->delete();
+        }
         return redirect()->back()->with('success', "Mahasiswa Berhasil Dihapus");
     }
 }

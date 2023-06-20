@@ -21,7 +21,7 @@ Home
                         <div class="media-body p-2">
                             <h6 class="media-title m-0">TOTAL USERS</h6>
                             <div class="media-text">
-                                <h3>{{$users}}</h3>
+                                {{-- <h3>{{$users}}</h3> --}}
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@ Home
                         <div class="media-body p-2">
                             <h6 class="media-title m-0">CATEGORIES</h6>
                             <div class="media-text">
-                                <h3>{{$categories}}</h3>
+                                {{-- <h3>{{$categories}}</h3> --}}
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@ Home
                         <div class="media-body p-2">
                             <h6 class="media-title m-0">TOTAL BUKU</h6>
                             <div class="media-text">
-                                <h3>{{$books}}</h3>
+                                {{-- <h3>{{$books}}</h3> --}}
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@ Home
                         <div class="media-body p-2">
                             <h6 class="media-title m-0">TOTAL ORDERS</h6>
                             <div class="media-text">
-                                <h3>{{$orders}}</h3>
+                                {{-- <h3>{{$orders}}</h3> --}}
                             </div>
                         </div>
                     </div>

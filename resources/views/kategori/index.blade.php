@@ -8,11 +8,11 @@
     <div class="row">
         <div class="col-md-12">
 
-            {{-- @if (session('status'))
+            @if (session('status'))
         <div class="alert alert-success">
             {{session('status')}}
         </div>
-        @endif --}}
+        @endif
 
          
 
@@ -29,12 +29,8 @@
             <table class="table table-bordered table-stripped">
                 <thead>
                     <tr>
-                        <th><b>No</b></th>
-                        <th><b>Judul</b></th>
-                        <th><b>Penulis</b></th>
-                        <th><b>Penerbit</b></th>
-                        <th><b>Stok</b></th>
-                        <th><b>Harga</b></th>
+                        <th><b>No.</b></th>
+                        <th><b>Kategori</b></th>
                         <th><b>Edit / Hapus</b></th>
                     </tr>
                 </thead>
@@ -42,22 +38,18 @@
                     @foreach ($kategori as $item)
                         <tr>
 
-                            <td>{{ $item->idBuku }}</td>
-                            <td>{{ $item->judul }}</td>
-                            <td>{{ $item->penulis }}</td>
-                            <td>{{ $item->penerbit }}</td>
-                            <td>{{ $item->stok }}</td>
-                            <td>{{ $item->harga }}</td>
-                            {{-- <td>
-                                <form action="{{ route('kategori.destroy', $item->idBuku) }}" method="POST">
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->kategori }}</td>
+                            <td>
+                                <form action="{{ route('kategori.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     
-                                    <a href="{{ route('kategori.edit', $item->idBuku) }}" type="submit" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('kategori.edit',$item->id)}}" type="submit" class="btn btn-warning">Edit</a>
 
                                     @method('delete')
                                     <button type="submit" class="btn btn-xs btn-danger show_confirm">Delete</button>
                                 </form>
-                            </td> --}}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
