@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PeminjamanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('/books',BooksController::class);
+Route::resource('/kategori',KategoriController::class);
+Route::resource('/peminjaman',PeminjamanController::class);

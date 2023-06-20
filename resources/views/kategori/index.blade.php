@@ -20,8 +20,8 @@
             <div class="row mb-3">
                 <div class="col-md-12 text-right">
                     <br>
-                    <a href="{{ route('books.create') }}" class=" mr-5 mb-3 btn btn-primary">
-                        Tambah Buku
+                    <a href="{{ route('kategori.create') }}" class=" mr-5 mb-3 btn btn-primary">
+                        Tambah 
                     </a>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($book as $item)
+                    @foreach ($kategori as $item)
                         <tr>
 
                             <td>{{ $item->idBuku }}</td>
@@ -48,16 +48,16 @@
                             <td>{{ $item->penerbit }}</td>
                             <td>{{ $item->stok }}</td>
                             <td>{{ $item->harga }}</td>
-                            <td>
-                                <form action="{{ route('books.destroy', $item->idBuku) }}" method="POST">
+                            {{-- <td>
+                                <form action="{{ route('kategori.destroy', $item->idBuku) }}" method="POST">
                                     @csrf
                                     
-                                    <a href="{{ route('books.edit', $item->idBuku) }}" type="submit" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('kategori.edit', $item->idBuku) }}" type="submit" class="btn btn-warning">Edit</a>
 
                                     @method('delete')
                                     <button type="submit" class="btn btn-xs btn-danger show_confirm">Delete</button>
                                 </form>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>

@@ -10,6 +10,8 @@ class BooksController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     
     public function index()
     {
         return view('books.index',[
@@ -45,7 +47,7 @@ class BooksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Books $books)
+    public function show(Books $book)
     {
         //
     }
@@ -53,25 +55,38 @@ class BooksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Books $books)
+    public function edit(Books $book)
     {
-        //
+  
+        return view('books.edit')
+       
+        ->with('books',$book);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Books $books)
+    public function update(Request $request, Books $book)
     {
-        //
+        $validateData = $request->validate([
+            "judul"=>"required|string",
+            "penulis"=>"required|string",
+            "penerbit"=>"required|string",
+            "stok"=>"required|integer",
+            "harga"=>"required|integer",
+        ]);
+        $book->update($validateData);
+      
+        
+        return redirect()->route('books.index')->with('sucess', 'data buku' . $validateData['judul'] . 'berhasil');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Books $books)
+    public function destroy(Books $book)
     {
-        $books->delete();
-        return redirect()->back()->with('success', "Mahasiswa Berhasil Dihapus");
+        $book->delete();
+        return back();
     }
 }

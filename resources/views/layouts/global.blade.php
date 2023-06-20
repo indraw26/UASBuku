@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Larashop @yield("title")</title>
+    <title>Buku @yield("title")</title>
     <link rel="stylesheet" href="{{asset('polished/polished.min.css')}}">
     <link rel="stylesheet" href="{{asset('polished/iconic/css/open-iconic-bootstrap.min.css')}}">
     <style>
@@ -40,7 +40,7 @@
 
 <body>
     <nav class="navbar navbar-expand p-0">
-        <a class="navbar-brand text-center col-xs-12 col-md-3 col-lg-2 mr0" href="#"> Larashop </a>
+        <a class="navbar-brand text-center col-xs-12 col-md-3 col-lg-2 mr0" href="#"> Buku </a>
         <button class="btn btn-link d-block d-md-none" datatoggle="collapse" data-target="#sidebar-nav" role="button">
             <span class="oi oi-menu"></span>
         </button>
@@ -74,13 +74,15 @@
                 <ul class="polished-sidebar-menu ml-0 pt-4 p-0 d-md-block">
                     <input class="border-dark form-control d-block d-md-none mb-4" type="text" placeholder="Search"
                         aria-label="Search" />
-                    {{-- <li><a href="{{route('home')}}"><span class="oi oi-home"></span>
-                            Home</a></li>
-                    <li><a href="{{route('categories.index')}}"><span class="oi oi-tag"></span>
-                            Manage Categories</a></li>
-                    <li><a href="{{route('books.index')}}"><span class="oi oi-book"></span>
-                            Manage Books</a></li>
-                    --}}
+                        <li><a href="{{route('books.index')}}"><span class="oi oi-book"></span>
+                                Books</a></li>
+                    <li><a href="{{route('kategori.index')}}"><span class="oi oi-tag"></span>
+                            Kategori</a></li>
+                    <li><a href="{{route('kategori.index')}}"><span class="oi oi-tag"></span>
+                            Peminjaman</a></li>
+             
+               
+                   
 
                     <div class="d-block d-md-none">
                         <div class="dropdown-divider"></div>

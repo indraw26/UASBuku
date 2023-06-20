@@ -16,7 +16,7 @@
             </div>
         @endif
         
-        <form action="{{route('books.store')}}" method="POST" class="shadow-sm p-3 bg-white">
+        <form action="{{route('kategori.store')}}" method="POST" class="shadow-sm p-3 bg-white">
         
             @csrf
 
@@ -58,7 +58,7 @@
 
             <button class="btn btn-primary" name="save_action">Tambah</button>
 
-            <a class="btn btn-secondary" href="{{ url('/books') }}">Kembali</a>
+            <a class="btn btn-secondary" href="{{ url('/kategori') }}">Kembali</a>
         </form>
     </div>
 </div>

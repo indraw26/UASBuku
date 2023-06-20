@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Books;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
-class BooksController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+     
     public function index()
     {
-        return view('books.index',[
-            "book"=>Books::all()
+        return view('kategori.index',[
+            "kategori"=>Kategori::all()
         ]);
     }
 
@@ -22,7 +24,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        return view('kategori.create');
     }
 
     /**
@@ -37,41 +39,41 @@ class BooksController extends Controller
             "stok"=>"required|integer",
             "harga"=>"required|integer",
         ]);
-        Books::create($validateData);
+        Kategori::create($validateData);
 
-        return redirect()->route('books.index')->with('status', 'Book created successfully');
+        return redirect()->route('kategori.index')->with('status', 'Book created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Books $books)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Books $books)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Books $books)
-    {
-        //
-    }
+    // public function update(Request $request, Books $book)
+    // {
+    //     $validateData = $request->validate([
+    //         "judul"=>"required|string",
+    //         "penulis"=>"required|string",
+    //         "penerbit"=>"required|string",
+    //         "stok"=>"required|integer",
+    //         "harga"=>"required|integer",
+    //     ]);
+    //     $book->update($validateData);
+      
+        
+    //     return redirect()->route('books.index')->with('sucess', 'data buku' . $validateData['judul'] . 'berhasil');
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Books $books)
-    {
-        $books->delete();
-        return redirect()->back()->with('success', "Mahasiswa Berhasil Dihapus");
-    }
+
 }
