@@ -1,3 +1,5 @@
+sebelum install laravel 
+
 php migrate artisan :fresh --seed
 
 
