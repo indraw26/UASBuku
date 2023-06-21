@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeminjamananController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',function(){
-    return view('home');
+    return view('auth.login');
+});
+
+Route::post('/',[LoginController::class,'authenticate']);
+Route::post('/logout',[LoginController::class,'logout']);
+Route::get('/dashboard',function(){
+    return view('auth.login');
 });
 Route::resource('/books',BooksController::class);
 Route::resource('/kategori',KategoriController::class);

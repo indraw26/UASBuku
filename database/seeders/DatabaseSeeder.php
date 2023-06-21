@@ -6,6 +6,8 @@ namespace Database\Seeders;
 
 use App\Models\Books;
 use App\Models\Kategori;
+use App\Models\Peminjamanan;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -34,6 +36,19 @@ class DatabaseSeeder extends Seeder
         Kategori::create([
             "id"=>"1",
             "kategori"=>"romantis"
+        ]);
+
+        User::create([
+            "name"=>"admin",
+            "email"=>"admin@gmail.com",
+            "password"=>"admin"
+        ]);
+
+        Peminjamanan::create([
+            'id'=>"1",
+            'id_user'=>"1",
+            "id_buku"=>"1",
+            "id_kategori"=>"1",
         ]);
     }
 }
