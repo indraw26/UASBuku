@@ -26,16 +26,30 @@ class DatabaseSeeder extends Seeder
 
         Books::create([
             'id'=>"1",
-            "judul"=>"PAW INDAH",
+            "judul"=>"Pemprogramman Web",
             "Penulis"=>"Usman",
             "Penerbit"=>"UMDP",
             "stok"=>"2",
             "harga"=>1000
         ]);
 
+        Books::create([
+            'id'=>"2",
+            "judul"=>"Dunia Modern Tanpa Teknologi",
+            "Penulis"=>"Indra",
+            "Penerbit"=>"UMDP",
+            "stok"=>"5",
+            "harga"=>2000
+        ]);
+
         Kategori::create([
             "id"=>"1",
-            "kategori"=>"romantis"
+            "kategori"=>"Romantis"
+        ]);
+        
+        Kategori::create([
+            "id"=>"2",
+            "kategori"=>"Horror"
         ]);
 
         User::create([
@@ -45,10 +59,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Peminjamanan::create([
-            'id'=>"1",
-            'id_user'=>"1",
-            "id_buku"=>"1",
-            "id_kategori"=>"1",
+            'user_id'=>"1",
+            "book_id"=>"1",
+            "kategori_id"=>"1",
+            'lamaPinjam'=>3
         ]);
     }
 }

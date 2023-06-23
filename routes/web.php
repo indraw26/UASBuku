@@ -21,11 +21,12 @@ Route::get('/',function(){
     return view('auth.login');
 });
 
+Route::get('/dashboard',function(){
+    return view('home');
+});
+
 Route::post('/',[LoginController::class,'authenticate']);
 Route::post('/logout',[LoginController::class,'logout']);
-Route::get('/dashboard',function(){
-    return view('auth.login');
-});
 Route::resource('/books',BooksController::class);
 Route::resource('/kategori',KategoriController::class);
 Route::resource('/peminjaman',PeminjamananController::class);

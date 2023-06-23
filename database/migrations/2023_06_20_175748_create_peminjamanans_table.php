@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('peminjamanans', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreignid('id_buku');
-            $table->foreign('id_buku')->references('id')->on('books');
-            $table->foreignid('id_kategori');
-            $table->foreign('id_kategori')->references('id')->on('kategoris');
+            $table->foreignid('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignid('book_id');
+            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreignid('kategori_id');
+            $table->foreign('kategori_id')->references('id')->on('kategoris');
+            $table->integer('lamaPinjam');
             $table->timestamps();
         });
     }

@@ -74,11 +74,13 @@
                 <ul class="polished-sidebar-menu ml-0 pt-4 p-0 d-md-block">
                     <input class="border-dark form-control d-block d-md-none mb-4" type="text" placeholder="Search"
                         aria-label="Search" />
+                        <li><a href="{{url('/dashboard')}}"><span class="oi oi-book"></span>
+                            Dashboard</a></li>
                         <li><a href="{{route('books.index')}}"><span class="oi oi-book"></span>
                                 Books</a></li>
                     <li><a href="{{route('kategori.index')}}"><span class="oi oi-tag"></span>
                             Kategori</a></li>
-                    <li><a href="{{route('kategori.index')}}"><span class="oi oi-tag"></span>
+                    <li><a href="{{route('peminjaman.index')}}"><span class="oi oi-tag"></span>
                             Peminjaman</a></li>
              
                

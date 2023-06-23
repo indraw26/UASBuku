@@ -8,17 +8,20 @@
     <div class="row">
         <div class="col-md-12">
 
-            @if (session('Notification'))
+            @if (session('status'))
         <div class="alert alert-success">
-            {{session('Notification')}}
+            {{session('status')}}
         </div>
         @endif
+
+         
+
 
             <div class="row mb-3">
                 <div class="col-md-12 text-right">
                     <br>
-                    <a href="{{ route('books.create') }}" class=" mr-5 mb-3 btn btn-primary">
-                        Tambah Buku
+                    <a href="{{ route('peminjaman.create') }}" class=" mr-5 mb-3 btn btn-primary">
+                        Tambah 
                     </a>
                 </div>
             </div>
@@ -26,30 +29,25 @@
             <table class="table table-bordered table-stripped">
                 <thead>
                     <tr>
-                        <th><b>No</b></th>
-                        <th><b>Judul</b></th>
-                        <th><b>Penulis</b></th>
-                        <th><b>Penerbit</b></th>
-                        <th><b>Stok</b></th>
-                        <th><b>Harga</b></th>
+                        <th><b>No.</b></th>
+                        <th><b>Buku</b></th>
+                        <th><b>Kategori</b></th>
+                        <th><b>Lama Pinjam</b></th>
                         <th><b>Edit / Hapus</b></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($book as $item)
+                    @foreach ($peminjaman as $item)
                         <tr>
-
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->judul }}</td>
-                            <td>{{ $item->penulis }}</td>
-                            <td>{{ $item->penerbit }}</td>
-                            <td>{{ $item->stok }}</td>
-                            <td>{{ $item->harga }}</td>
+                            <td>{{ $item->books->judul }}</td>
+                            <td>{{ $item->kategori->kategori }}</td>
+                            <td>{{ $item->lamaPinjam }}</td>
                             <td>
-                                <form action="{{ route('books.destroy', $item->id) }}" method="POST">
+                                <form action="{{ route('peminjaman.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     
-                                    <a href="{{ route('books.edit', $item->id) }}" type="submit" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('peminjaman.edit',$item->id)}}" type="submit" class="btn btn-warning">Edit</a>
 
                                     @method('delete')
                                     <button type="submit" class="btn btn-xs btn-danger show_confirm">Delete</button>
@@ -84,4 +82,6 @@
   
 </script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <!-- row end -->
+    <!-- row end -->
 @endsection
