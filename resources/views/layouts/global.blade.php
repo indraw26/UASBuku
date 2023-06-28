@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand p-0">
+    <nav class="navbar navbar-fluids p-0">
         <a class="navbar-brand text-center col-xs-12 col-md-3 col-lg-2 mr0" href="#"> Buku </a>
         <button class="btn btn-link d-block d-md-none" datatoggle="collapse" data-target="#sidebar-nav" role="button">
             <span class="oi oi-menu"></span>
@@ -48,7 +48,7 @@
         <input style="background-color: #202e78" class="border-dark bg-primary-darkest form-control d-none d-md-block w-50 ml-3 mr-2" type="text" disabled
             arialabel="Search">
 
-        <div class="dropdown d-none d-md-block">
+        <div class="dropdown d-none d-md-block mx-5">
             @if(\Auth::user())
             <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
                 {{Auth::user()->name}}

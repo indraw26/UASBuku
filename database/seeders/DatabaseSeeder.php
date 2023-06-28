@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            "name"=>"admin",
+            "name"=>"Admin",
             "email"=>"admin@gmail.com",
             "password"=>"admin"
         ]);
